@@ -4,15 +4,16 @@
     <tr>
     <th>Id </th>
     <th>Name</th>
-<!--    <th>ProductImage</th>-->
+    <th>ProductImage</th>
     <th>Price</th>
     <th>Brand</th>
     <th>SKU</th>
+    <th>Action</th>
     </tr>
         <?php foreach ($allData as $data): ?>
         <td><?php echo $data->id?></td>
         <td><?php echo $data->product_name?></td>
-<!--        <td></td>-->
+        <td><img class="image" src="<?= $data->product_image?>"></td>
         <td><?php echo $data->price?></td>
         <td><?php echo $data->brand?></td>
         <td><?php echo $data->sku?></td>
@@ -34,3 +35,11 @@
 <a href="../view/form.php">Add Product</a>
 </body>
 </html>
+
+
+<style>
+    .image{
+        width: 75px;
+        height: 75px;
+    }
+</style>

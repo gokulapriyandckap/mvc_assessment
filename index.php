@@ -5,7 +5,7 @@ $controllers = new userController();
 
 
 
-$controllers->createImage($_FILES);
+//$controllers->createImage($_FILES);
 
 
 
@@ -15,7 +15,7 @@ if (isset($_POST['action']))
 
     switch ($action){
         case 'create';
-            $controllers->create($_POST);
+            $controllers->create($_POST, $_FILES);
             break;
         case 'delete';
             $controllers->delete($_POST);
@@ -24,7 +24,7 @@ if (isset($_POST['action']))
             $controllers->edit($_POST);
             break;
         case 'update';
-            $controllers->update($_POST);
+            $controllers->update($_POST,$_FILES);
             break;
         default:
             $controllers->index();

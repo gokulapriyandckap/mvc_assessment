@@ -16,7 +16,7 @@
         <label>Product Name</label>
         <input name="edited_product_name" type="text" value="<?= $editData->product_name; ?>">
         <label>Product Image</label>
-        <input type="file" required name="product_image">
+        <input type="file" name="edited_product_image" value="<?= $editData->product_image?> required>
         <label class="align">SKU</label>
         <input required  value="<?= $editData->sku;?>" name="edited_sku">
         <label class="align">Price</label>

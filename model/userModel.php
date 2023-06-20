@@ -31,25 +31,26 @@ class userModel extends Database
         $ediDatas = $edit->fetchAll(PDO::FETCH_OBJ);
         return $ediDatas;
     }
-    public function create($product_name,$sku,$price,$brand,$date,$available_stock){
-         $this->db->query("INSERT INTO products(product_name,sku,price,brand,manufacure_date,available_stock) VALUES ('$product_name','$sku','$price','$brand','$date','$available_stock')");
+    public function create($product_name,$sku,$price,$brand,$date,$available_stock,$product_image){
+        $filePath = "uploads/".$product_image["name"];
+        move_uploaded_file($product_image["tmp_name"],"$filePath");
+
+
+        $this->db->query("INSERT INTO products(product_name,product_image,sku,price,brand,manufacure_date,available_stock) VALUES ('$product_name','$filePath','$sku','$price','$brand','$date','$available_stock')");
         header("location:/");
     }
-    public function createImage($image){
-        if ($image['name'] !=='' && $image['tmp_name']){
-        $filePath = "uploads/".$image['name'];
-        move_uploaded_file($image['tmp_name'],"$filePath");
-        $this->db->query("INSERT INTO images(image) values ('$filePath')");
-        }
-    }
+
 
     public function delete($deleteID){
 $this->db->query("DELETE FROM products WHERE id = '$deleteID'");
-header("location:/");
     }
 
-    public function update($updateId,$editedData){
-        $this->db->query("UPDATE products set product_name='$editedData[edited_product_name]',sku='$editedData[edited_sku]',price='$editedData[edited_price]',brand='$editedData[edited_brand],'available_stock='$editedData[edited_available_stock]' where id ='$updateId' ");
+    public function update($updateId,$editedData,$editimg){
+
+        $updateImg = $editimg["edited_product_image"];
+        $filePath = "uploads/".$updateImg["name"];
+        move_uploaded_file($updateImg["tmp_name"],"$filePath");
+        $this->db->query("UPDATE products set product_name='$editedData[edited_product_name]', product_image='$filePath', sku='$editedData[edited_sku]', price='$editedData[edited_price]', brand='$editedData[edited_brand]', available_stock='$editedData[edited_available_stock]' where id ='$updateId' ");
     }
 
 }

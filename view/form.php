@@ -21,10 +21,12 @@
     <input name="price" placeholder="price" required type="number">
     <label class="align">Brand</label>
     <select name="brand">
-        <option value="Sonata">panasonic</option>
+        <option value="Sonata">Sonata</option>
+        <option value="Panasonic">Panasonic</option>
         <option value="LG">LG</option>
         <option value="Redmi">Redmi</option>
-        <option value="preethi">preethi</option>
+        <option value="Preethi">preethi</option>
+        <option value="Rolex">Rolex</option>
     </select>
     <label>Manufacturer Date</label>
     <input name="date" type="date">
@@ -33,7 +35,7 @@
     <input type="hidden" name="action" value="create">
     <input type="hidden" name="action1" value="createimage">
     <input type="submit" value="submit">
-    <a href="../view/list.php">All Products</a>
+    <a href="/">All Products</a>
 </form>
 </div>
 </body>
